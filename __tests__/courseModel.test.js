@@ -1,4 +1,9 @@
-const { getAllCourses, getCourseById, getCoursesByLevel } = require('../models/coursesModel');
+const { 
+    getAllCourses, 
+    getCourseById, 
+    getCoursesByLevel,
+    getCoursesByCategory
+} = require('../models/coursesModel');
 
 describe('Course Model', () => {
     test('getAllCourses should return an array of courses', async () => {
@@ -18,5 +23,12 @@ describe('Course Model', () => {
         const courses = await getCoursesByLevel(level);
         expect(Array.isArray(courses)).toBe(true);
         expect(courses.every(course => course.level === level)).toBe(true);
+    });
+
+    test('getCoursesByCategory should return an array of courses for a given category', async () => {
+        const category = 'animals';
+        const courses = await getCoursesByCategory(category);
+        expect(Array.isArray(courses)).toBe(true);
+        expect(courses.every(course => course.category === category)).toBe(true);
     });
 });
