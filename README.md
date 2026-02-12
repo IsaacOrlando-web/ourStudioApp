@@ -76,14 +76,48 @@ ourstudio/
 └── package.json
 ```
 
-##🔌 Main Routes
-Method	Endpoint	Description
-GET	/courses	Browse all courses
-GET	/courses/:id	Course details
-POST	/courses/:id/enroll	Enroll in course
-GET	/my-courses	Your progress
-GET	/lessons/:id	View lesson
-POST	/lessons/:id/complete	Complete & upload
-POST	/register	Create account
-POST	/login	Sign in
-GET	/dashboard	User dashboard
+## 🔌 Main Routes
+
+| Method | Endpoint | Description | Auth |
+|--------|----------|-------------|:----:|
+| 📚 **COURSES** |
+| 👀 GET | `/courses` | Browse all courses | 🙋 |
+| 🔍 GET | `/courses/:id` | Course details | 🙋 |
+| 🎯 GET | `/courses/level/:level` | Filter by level | 🙋 |
+| 🗂️ GET | `/courses/category/:category` | Filter by category | 🙋 |
+| 🔎 GET | `/courses/search?q=` | Search courses | 🙋 |
+| 📝 POST | `/courses/:id/enroll` | Enroll in course | 🔐 |
+| ⭐ POST | `/courses/:id/save` | Save for later | 🔐 |
+| 🗑️ DELETE | `/courses/:id/drop` | Drop course | 🔐 |
+| 📋 GET | `/my-courses` | My enrolled courses | 🔐 |
+| 💾 GET | `/saved-courses` | My saved courses | 🔐 |
+| | | |
+| ✏️ **LESSONS** |
+| 📖 GET | `/lessons/:id` | View lesson | 🙋 |
+| ⏩ GET | `/lessons/:id/next` | Next lesson | 🙋 |
+| ⏪ GET | `/lessons/:id/prev` | Previous lesson | 🙋 |
+| ✅ POST | `/lessons/:id/complete` | Complete lesson & upload | 🔐 |
+| 📚 GET | `/courses/:courseId/lessons` | All course lessons | 🙋 |
+| | | |
+| 👤 **AUTH & USERS** |
+| 📝 GET | `/register` | Registration form | 🙋 |
+| ✍️ POST | `/register` | Create account | 🙋 |
+| 🔑 GET | `/login` | Login form | 🙋 |
+| 🚪 POST | `/login` | Authenticate | 🙋 |
+| 🚶 GET | `/logout` | Logout | 🔐 |
+| 📊 GET | `/dashboard` | User dashboard | 🔐 |
+| 👤 GET | `/profile` | View profile | 🔐 |
+| ✏️ PUT | `/profile` | Update profile | 🔐 |
+| 🖼️ POST | `/profile/avatar` | Upload avatar | 🔐 |
+| | | |
+| 🖼️ **GALLERY & COMMUNITY** |
+| 🎨 GET | `/gallery` | My personal gallery | 🔐 |
+| 🖼️ GET | `/gallery/:id` | View single drawing | 🔐 |
+| 🗑️ DELETE | `/gallery/:id` | Delete drawing | 🔐 |
+| 🌍 GET | `/community` | Community feed | 🙋 |
+| 💬 POST | `/drawings/:id/comments` | Add comment | 🔐 |
+| ❤️ POST | `/drawings/:id/like` | Like drawing | 🔐 |
+
+**Legend:**
+- 🙋 = Public (no authentication required)
+- 🔐 = Private (login required)
