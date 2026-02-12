@@ -1,0 +1,42 @@
+
+[
+  {
+    "_id": { "$oid": "65a1b2c3d4e5f6a7b8c9d001" },
+    "title": "Draw Birds: From Beginner to Observer",
+    "author": "Isaac Maldonado",
+    "coverUrl": "https://ourstudio.s3.amazonaws.com/courses/birds-cover.jpg",
+    "description": "Learn to observe and draw birds from scratch. This course will teach you to capture the essence of birds: from basic shapes to feathers and expressions. No previous experience needed, just the desire to see with fresh eyes.",
+    "level": "beginner",
+    "category": "animals",
+    "lessonsCount": 4,
+    "createdAt": { "$date": "2025-01-15T10:30:00Z" },
+    "enrolledStudents": 342,
+    "isActive": true
+  },
+  {
+    "_id": { "$oid": "65a1b2c3d4e5f6a7b8c9d002" },
+    "title": "Caricature Faces: Express Yourself with Every Line",
+    "author": "Isaac Maldonado",
+    "coverUrl": "https://ourstudio.s3.amazonaws.com/courses/caricatures-cover.jpg",
+    "description": "Caricature faces are not just exaggeration—they are synthesis and personality. In this course you'll learn to simplify human faces into characters full of life, emotion, and your own style. Perfect for comics, digital illustration, or just having fun.",
+    "level": "intermediate",
+    "category": "portrait",
+    "lessonsCount": 4,
+    "createdAt": { "$date": "2025-02-03T14:15:00Z" },
+    "enrolledStudents": 218,
+    "isActive": true
+  },
+  {
+    "_id": { "$oid": "65a1b2c3d4e5f6a7b8c9d003" },
+    "title": "Shadows & Light: Volume on Paper",
+    "author": "Isaac Maldonado",
+    "coverUrl": "https://ourstudio.s3.amazonaws.com/courses/shadows-cover.jpg",
+    "description": "What separates a flat drawing from a living one is light. This beginner course will teach you the fundamentals of chiaroscuro: how to observe contrast, create subtle gradients, and give volume to any object. Your first step into drawing with depth.",
+    "level": "beginner",
+    "category": "technique",
+    "lessonsCount": 6,
+    "createdAt": { "$date": "2024-11-20T09:45:00Z" },
+    "enrolledStudents": 567,
+    "isActive": true
+  }
+]

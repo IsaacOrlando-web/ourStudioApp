@@ -1,0 +1,62 @@
+
+[
+  {
+    "_id": { "$oid": "65a1b2c3d4e5f6a7b8c9d101" },
+    "courseId": { "$oid": "65a1b2c3d4e5f6a7b8c9d001" },
+    "stepNumber": 1,
+    "title": "A Bird is an Egg with Wings",
+    "description": "Forget the details. A bird, in its simplest form, is an egg. In this lesson you'll learn to see the basic structure: oval for the body, circle for the head, and guide lines for movement. Draw 5 birds in different positions using only these shapes.",
+    "images": [
+      "https://ourstudio.s3.amazonaws.com/lessons/birds-01-shapes.jpg",
+      "https://ourstudio.s3.amazonaws.com/lessons/birds-01-examples.jpg"
+    ],
+    "nextStepId": { "$oid": "65a1b2c3d4e5f6a7b8c9d102" },
+    "prevStepId": null,
+    "createdAt": { "$date": "2025-01-15T11:00:00Z" }
+  },
+  {
+    "_id": { "$oid": "65a1b2c3d4e5f6a7b8c9d102" },
+    "courseId": { "$oid": "65a1b2c3d4e5f6a7b8c9d001" },
+    "stepNumber": 2,
+    "title": "Beaks, Feet and Eyes",
+    "description": "Now that you have the base shape, it's time to give identity. Beaks change according to the bird's diet, feet according to its habitat, and eyes according to its size. I'll show you how to simplify these parts without losing recognizability. Practice adding these elements to your birds from the previous lesson.",
+    "images": [
+      "https://ourstudio.s3.amazonaws.com/lessons/birds-02-beaks.jpg",
+      "https://ourstudio.s3.amazonaws.com/lessons/birds-02-eyes.jpg",
+      "https://ourstudio.s3.amazonaws.com/lessons/birds-02-feet.jpg"
+    ],
+    "nextStepId": { "$oid": "65a1b2c3d4e5f6a7b8c9d103" },
+    "prevStepId": { "$oid": "65a1b2c3d4e5f6a7b8c9d101" },
+    "createdAt": { "$date": "2025-01-16T10:15:00Z" }
+  },
+  {
+    "_id": { "$oid": "65a1b2c3d4e5f6a7b8c9d103" },
+    "courseId": { "$oid": "65a1b2c3d4e5f6a7b8c9d001" },
+    "stepNumber": 3,
+    "title": "Feathers: Texture Without Copying Every Feather",
+    "description": "The most common mistake is wanting to draw feather by feather. Here I'll teach you to suggest texture with directional strokes, shadow groupings, and soft edges. You'll practice with smooth-plumaged birds (sparrows) and birds with showy plumage (woodpeckers, bluebirds).",
+    "images": [
+      "https://ourstudio.s3.amazonaws.com/lessons/birds-03-feathers1.jpg",
+      "https://ourstudio.s3.amazonaws.com/lessons/birds-03-feathers2.jpg",
+      "https://ourstudio.s3.amazonaws.com/lessons/birds-03-exercise.jpg"
+    ],
+    "nextStepId": { "$oid": "65a1b2c3d4e5f6a7b8c9d104" },
+    "prevStepId": { "$oid": "65a1b2c3d4e5f6a7b8c9d102" },
+    "createdAt": { "$date": "2025-01-18T09:30:00Z" }
+  },
+  {
+    "_id": { "$oid": "65a1b2c3d4e5f6a7b8c9d104" },
+    "courseId": { "$oid": "65a1b2c3d4e5f6a7b8c9d001" },
+    "stepNumber": 4,
+    "title": "Birds in Action: Flying, Perched, Singing",
+    "description": "Life isn't static. Learn to draw birds in motion: wings extended, heads turned, feet gripping branches. We'll use photo references but also direct observation. Your final exercise: a small sketchbook of 3 different birds in different postures.",
+    "images": [
+      "https://ourstudio.s3.amazonaws.com/lessons/birds-04-flight.jpg",
+      "https://ourstudio.s3.amazonaws.com/lessons/birds-04-branches.jpg",
+      "https://ourstudio.s3.amazonaws.com/lessons/birds-04-references.jpg"
+    ],
+    "nextStepId": null,
+    "prevStepId": { "$oid": "65a1b2c3d4e5f6a7b8c9d103" },
+    "createdAt": { "$date": "2025-01-20T14:45:00Z" }
+  }
+]
