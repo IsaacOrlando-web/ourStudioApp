@@ -40,18 +40,41 @@ OurStudio is a web application where people of all skill levels learn to draw th
 - Node.js 18+
 - MongoDB 7+ (local or Atlas)
 ## 📁Project Structure
-
+```
 ourstudio/
-├── config/          # Database connection
-├── models/          # Mongoose schemas
-├── controllers/     # Business logic
-├── routes/          # API endpoints
-├── views/           # EJS templates
-├── public/          # CSS, JS, uploads
-├── middleware/      # Auth, upload, validation
-├── utils/           # Helper functions
-├── server.js        # Entry point
-└── package.json     # Dependencies
+├── 📁 config/
+│   └── db.js
+├── 📁 models/
+│   ├── CourseModel.js
+│   ├── LessonModel.js
+│   └── UserModel.js
+├── 📁 controllers/
+│   ├── CourseController.js
+│   ├── LessonController.js
+│   └── UserController.js
+├── 📁 routes/
+│   ├── index.js
+│   ├── courseRoutes.js
+│   ├── lessonRoutes.js
+│   └── userRoutes.js
+├── 📁 views/
+│   ├── 📁 partials/
+│   │   ├── header.ejs
+│   │   └── footer.ejs
+│   ├── 📁 courses/
+│   │   ├── index.ejs
+│   │   └── show.ejs
+│   └── index.ejs
+├── 📁 public/
+│   ├── 📁 css/
+│   │   └── style.css
+│   └── 📁 js/
+│       └── main.js
+├── 📁 middleware/
+│   └── auth.js
+├── server.js
+└── package.json
+```
 
 ##🔌 Main Routes
 Method	Endpoint	Description
