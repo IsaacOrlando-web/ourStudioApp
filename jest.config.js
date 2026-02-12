@@ -5,6 +5,7 @@
 
 /** @type {import('jest').Config} */
 const config = {
+  verbose: true,
   "preset": "@shelf/jest-mongodb",
   // All imported modules in your tests should be mocked automatically
   // automock: false,

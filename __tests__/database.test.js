@@ -1,9 +1,9 @@
-const {db, closeDB}  = require('../db/index');
+const {db, closeDB, connectDB}  = require('../db/index');
 
 describe('Ping', () => {
     let connection;
     beforeAll(async () => {
-        connection = await db;
+        connection = await connectDB();
     });
 
     afterAll(async () => {{
