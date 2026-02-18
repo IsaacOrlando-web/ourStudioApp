@@ -11,6 +11,9 @@ require('dotenv').config({ path: './.env' });
 const app = express();
 const port = process.env.PORT;
 
+app.use(express.json()); // Para parsear application/json
+app.use(express.urlencoded({ extended: true }));
+
 
 app.use(morgan('dev'));
 // Conectar a MongoDB

@@ -8,7 +8,6 @@ async function getAllLessons() {
         const db = getDB();
         const lessonsCollection = db.collection('lessons');
         const lessons = await lessonsCollection.find({}).toArray();
-        console.log('Lessons fetched successfully:', lessons);
         await db.client.close();
         return lessons; 
     } catch(error) {
@@ -24,7 +23,6 @@ async function getLessonsByCourseId(courseId) {
         const lessonsCollection = db.collection('lessons');
         const objectId = new ObjectId(courseId);
         const lessons = await lessonsCollection.find({ courseId: objectId }).toArray();
-        console.log('Lessons fetched successfully:', lessons);
         await db.client.close();
         return lessons; 
     } catch(error) {
@@ -65,4 +63,4 @@ async function getPrevLesson(lessonId) {
     }
 }
 
-getPrevLesson('65a1b2c3d4e5f6a7b8c9d103');
+module.exports = { getAllLessons, getLessonsByCourseId, getNextLesson, getPrevLesson };
