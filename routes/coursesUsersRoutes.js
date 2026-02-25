@@ -9,7 +9,7 @@ const {
 } = require('../controllers/coursesUserController');
 
 // Inscribir usuario a un curso
-router.post('/enroll', enrollInCourse);
+router.post('/enroll', enrollInCourse); //Works Perfectelly
 
 // Obtener todos los cursos de un usuario con su progreso
 router.get('/:username/courses', getAllUserCourses);

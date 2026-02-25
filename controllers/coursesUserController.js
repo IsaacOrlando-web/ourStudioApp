@@ -108,7 +108,9 @@ const completeLesson = async (req, res) => {
 // Obtener progreso de un curso específico
 const getCourseProgress = async (req, res) => {
   try {
+
     const { username, courseId } = req.params;
+    console.log(username, courseId);
     
     if (!ObjectId.isValid(courseId)) {
       return res.status(400).json({ message: 'ID de curso inválido' });
@@ -130,7 +132,7 @@ const getCourseProgress = async (req, res) => {
     }
     
     // Obtener información del curso
-    const course = await Course.findById(courseId);
+    const course = await Course.getCourseById(courseId);
     
     res.json({
       username: username,
@@ -151,10 +153,11 @@ const getCourseProgress = async (req, res) => {
 const getAllUserCourses = async (req, res) => {
   try {
     const { username } = req.params;
+    console.log(username);
     
     const userCourses = createCoursesUser(username);
     
-    // Verificar que el usuario tiene lecciones
+    //Verificar que el usuario tiene lecciones
     const exists = await userCourses.collectionExists();
     if (!exists) {
       return res.json({
@@ -167,9 +170,9 @@ const getAllUserCourses = async (req, res) => {
     // Obtener todas las lecciones
     const allLessons = await userCourses.getAllLessons();
     
-    // Agrupar por courseId
+    //// Agrupar por courseId
     const courseMap = new Map();
-    
+    //
     allLessons.forEach(lesson => {
       const courseId = lesson.courseId.toString();
       if (!courseMap.has(courseId)) {
@@ -185,12 +188,20 @@ const getAllUserCourses = async (req, res) => {
         course.completed++;
       }
     });
-    
-    // Obtener información de los cursos
+
+    //// Obtener información de los cursos
     const courseIds = Array.from(courseMap.keys()).map(id => new ObjectId(id));
-    const courses = await Course.find({ _id: { $in: courseIds } });
-    
-    // Combinar información
+    console.log(`${courseIds}: ${typeof(courseIds)}`); //funciona, extrae los Ids de los cursos.
+    //pasan a ser de tipo object todos los ids
+
+    courses = [];
+    for(let i = 0; i < courseIds.length; i++){//obtiene cada curso dentro de el arreglo courses
+      courses.push(await Course.getCourseById(courseIds[i]));
+    }
+    console.log(courses);
+
+
+    //// Combinar información
     const result = courses.map(course => {
       const progress = courseMap.get(course._id.toString());
       return {
