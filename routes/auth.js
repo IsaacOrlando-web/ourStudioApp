@@ -3,16 +3,14 @@ const passport = require('passport');
 const router = express.Router();
 const GoogleStrategy = require('passport-google-oidc');
 const { getDB } = require('../db/index');
+const { ObjectId } = require('mongodb');
 
 // Serialización simple
 passport.serializeUser((user, done) => done(null, user._id));
-passport.deserializeUser(async (id, done) => {
-  try {
-    const user = await getDB().collection('users').findOne({ _id: id });
-    done(null, user);
-  } catch (err) {
-    done(err);
-  }
+passport.deserializeUser(function(user, cb) {
+  process.nextTick(function() {
+    return cb(null, user);
+  });
 });
 
 // Estrategia de Google simplificada
