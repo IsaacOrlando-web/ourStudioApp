@@ -1,0 +1,49 @@
+<div class="bg-texture"></div> <!-- textura ligera de fondo -->
+
+    <div class="card">
+        <!-- LOGO: coloca aquí tu propia imagen (reemplaza src) -->
+        <div class="logo-placeholder">
+            <!-- 
+                =============================================
+                INSTRUCCIÓN: coloca tu imagen de logo 
+                =============================================
+                Puedes usar una etiqueta <img> normal. 
+                Ejemplo con un logo de prueba (remplazar URL):
+            -->
+            <img src="img/logo.png" 
+                 alt="Logo personalizado" 
+                 class="logo-img"
+                 style="border-radius: 20px; background: #dde5b6; padding: 10px 15px;">
+
+            <!-- Si prefieres no usar imagen ahora, el placeholder se activará al quitar la imagen. -->
+        </div>
+
+        <!-- Título llamada a la acción -->
+        <h1>¡Bienvenido!</h1>
+        <div class="subheading">accede con tu cuenta Google</div>
+
+        <!-- BOTÓN DE INGRESAR CON GOOGLE (EJS listo) -->
+        <a href="/login/federated/google" class="google-btn" onclick="console.log('Integrar ruta de autenticación con Google');">
+            <i class="fab fa-google"></i> <!-- icono de Google (FontAwesome) -->
+            <span>Ingresar con Google</span>
+        </a>
+
+        <!-- Pequeño mensaje adicional (opcional, se puede eliminar) -->
+        <div class="legal-note">
+            🌿 <a href="#">términos y privacidad</a> · espacio para tu marca
+        </div>
+    </div>
+
+    <!-- EJEMPLO DE CÓMO INCLUIR DINÁMICAMENTE EL LOGO CON EJS 
+         (si usas Node/Express, puedes descomentar y adaptar): 
+    <% if (locals.logoUrl) { %>
+        <div class="logo-placeholder">
+            <img src="<%= logoUrl %>" alt="Logo empresa">
+        </div>
+    <% } else { %>
+        <div class="logo-placeholder">
+            <i class="fas fa-paint-brush placeholder-icon"></i>
+            <span>aquí tu logo</span>
+        </div>
+    <% } %>
+    -->

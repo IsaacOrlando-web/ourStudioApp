@@ -218,11 +218,18 @@ const getAllUserCourses = async (req, res) => {
       };
     });
     
-    res.json({
+    //res.json({
+    //  username: username,
+    //  totalCourses: result.length,
+    //  courses: result
+    //});
+    res.render('./pages/myCourses', {
+      title: 'Mis Cursos',
       username: username,
       totalCourses: result.length,
-      courses: result
-    });
+      courses: result,
+      layout: './layouts/mainLayout'
+    })
     
   } catch (error) {
     console.error('Error en getAllUserCourses:', error);

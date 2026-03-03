@@ -1,0 +1,82 @@
+<!-- Header con estadísticas -->
+        <div class="page-header">
+            <h1>
+                Mis Cursos
+                <span class="stats-badge">
+                    <i class="fas fa-book"></i> <%= totalCourses %> cursos
+                </span>
+            </h1>
+            <div class="subtitle">
+                <i class="fas fa-user"></i>
+                <span>Bienvenido de nuevo, <strong><%= username %></strong></span>
+                <i class="fas fa-circle" style="font-size: 0.3rem; color: #adc178;"></i>
+                <span><%= courses.filter(c => c.progress.percentage === 100).length %> completados</span>
+            </div>
+        </div>
+
+        <!-- Grid de cursos -->
+        <% if (courses && courses.length > 0) { %>
+            <div class="courses-grid">
+                <% courses.forEach(course => { %>
+                    <div class="course-card">
+                        <img 
+                            src="<%= course.coverUrl %>" 
+                            alt="<%= course.title %>"
+                            class="course-cover"
+                            onerror="this.src='https://placehold.co/600x400/f0ead2/6c584c?text=Curso'"
+                        >
+                        <div class="course-content">
+                            <h3 class="course-title"><%= course.title %></h3>
+                            
+                            <div class="course-meta">
+                                <span class="badge level">
+                                    <i class="fas fa-signal"></i> <%= course.level %>
+                                </span>
+                                <span class="badge category">
+                                    <i class="fas fa-tag"></i> <%= course.category %>
+                                </span>
+                            </div>
+
+                            <div class="progress-section">
+                                <div class="progress-header">
+                                    <span>Progreso</span>
+                                    <span><%= course.progress.percentage %>%</span>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div 
+                                        class="progress-bar-fill" 
+                                        style="width: <%= course.progress.percentage %>%"
+                                    ></div>
+                                </div>
+                                <div class="progress-stats">
+                                    <span><i class="fas fa-check-circle"></i> <%= course.progress.completed %>/<%= course.progress.total %> lecciones</span>
+                                    <% if (course.progress.percentage === 100) { %>
+                                        <span style="color: #adc178;"><i class="fas fa-trophy"></i> Completado</span>
+                                    <% } %>
+                                </div>
+                            </div>
+
+                            <a href="/<%= username %>/courses/<%= course.id %>/progress" class="continue-btn">
+                                <% if (course.progress.percentage === 0) { %>
+                                    <i class="fas fa-play"></i> Comenzar curso
+                                <% } else if (course.progress.percentage === 100) { %>
+                                    <i class="fas fa-redo"></i> Repasar curso
+                                <% } else { %>
+                                    <i class="fas fa-arrow-right"></i> Continuar
+                                <% } %>
+                            </a>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        <% } else { %>
+            <!-- Estado vacío (sin cursos) -->
+            <div class="empty-state">
+                <i class="fas fa-books"></i>
+                <h3>No tienes cursos inscritos</h3>
+                <p>Explora nuestro catálogo y encuentra el curso perfecto para ti</p>
+                <a href="/explorar" class="explore-btn">
+                    <i class="fas fa-search"></i> Explorar cursos
+                </a>
+            </div>
+        <% } %>

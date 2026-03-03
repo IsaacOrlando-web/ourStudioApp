@@ -1,0 +1,351 @@
+    * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: #f0ead2;  /* Vanilla Cream */
+            min-height: 100vh;
+        }
+
+        /* ===== NAVBAR (copiado de tu diseño anterior) ===== */
+        .navbar {
+            background: #ffffff;
+            padding: 0.5rem 2rem;
+            box-shadow: 0 10px 25px -12px rgba(108, 88, 76, 0.3);
+            border-bottom: 3px solid #dde5b6;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-left {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.2rem 1.2rem;
+        }
+
+        .user-card {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            background: #f0ead2;
+            padding: 0.4rem 1.2rem 0.4rem 0.9rem;
+            border-radius: 40px;
+            border: 1px solid #adc178;
+            margin-right: 0.5rem;
+        }
+
+        .avatar-placeholder {
+            width: 34px;
+            height: 34px;
+            background: #a98467;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+        }
+
+        .user-name {
+            font-weight: 600;
+            color: #6c584c;
+            font-size: 1.1rem;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            color: #6c584c;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
+        }
+
+        .nav-item i {
+            color: #a98467;
+            font-size: 1.2rem;
+        }
+
+        .nav-item:hover {
+            background: #dde5b6;
+            border-color: #adc178;
+            transform: translateY(-1px);
+        }
+
+        .nav-item.active {
+            background: #adc178;
+            color: white;
+        }
+        
+        .nav-item.active i {
+            color: white;
+        }
+
+        .logout-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: transparent;
+            border: 2px solid #a98467;
+            border-radius: 40px;
+            padding: 0.5rem 1.5rem 0.5rem 1.2rem;
+            color: #6c584c;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .logout-btn:hover {
+            background: #6c584c;
+            border-color: #6c584c;
+            color: #f0ead2;
+        }
+
+        .logout-btn:hover i {
+            color: #f0ead2;
+        }
+
+        /* ===== CONTENIDO PRINCIPAL ===== */
+        .main-container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        /* Header de la página */
+        .page-header {
+            margin-bottom: 2.5rem;
+        }
+
+        .page-header h1 {
+            color: #6c584c;
+            font-size: 2.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-header .subtitle {
+            color: #a98467;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .page-header .subtitle i {
+            color: #adc178;
+        }
+
+        .stats-badge {
+            background: #dde5b6;
+            color: #6c584c;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-left: 1rem;
+        }
+
+        /* Grid de cursos */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        /* Tarjeta de curso */
+        .course-card {
+            background: white;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 10px 30px -15px #6c584c;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #dde5b6;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -20px #6c584c;
+        }
+
+        .course-cover {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-bottom: 3px solid #adc178;
+        }
+
+        .course-content {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .course-title {
+            color: #6c584c;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+
+        .course-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: capitalize;
+            background: #f0ead2;
+            color: #6c584c;
+            border: 1px solid #adc178;
+        }
+
+        .badge.level {
+            background: #dde5b6;
+        }
+
+        .badge.category {
+            background: #a98467;
+            color: white;
+            border: none;
+        }
+
+        /* Barra de progreso */
+        .progress-section {
+            margin-top: auto;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            color: #6c584c;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 8px;
+            background: #dde5b6;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: #adc178;
+            border-radius: 20px;
+            transition: width 0.3s ease;
+            position: relative;
+        }
+
+        .progress-stats {
+            display: flex;
+            justify-content: space-between;
+            color: #a98467;
+            font-size: 0.85rem;
+        }
+
+        .continue-btn {
+            display: block;
+            text-align: center;
+            background: #f0ead2;
+            color: #6c584c;
+            text-decoration: none;
+            padding: 0.75rem;
+            border-radius: 40px;
+            margin-top: 1rem;
+            border: 1px solid #adc178;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .continue-btn:hover {
+            background: #adc178;
+            color: white;
+        }
+
+        /* Empty state */
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 4rem 2rem;
+            background: white;
+            border-radius: 2rem;
+            border: 2px dashed #adc178;
+        }
+
+        .empty-state i {
+            font-size: 4rem;
+            color: #dde5b6;
+            margin-bottom: 1rem;
+        }
+
+        .empty-state h3 {
+            color: #6c584c;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .empty-state p {
+            color: #a98467;
+            margin-bottom: 2rem;
+        }
+
+        .explore-btn {
+            background: #adc178;
+            color: white;
+            text-decoration: none;
+            padding: 0.75rem 2rem;
+            border-radius: 40px;
+            font-weight: 500;
+            display: inline-block;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.5rem 1rem;
+            }
+            .nav-left {
+                gap: 0.5rem;
+            }
+            .user-card {
+                padding: 0.3rem 1rem 0.3rem 0.7rem;
+            }
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+        }

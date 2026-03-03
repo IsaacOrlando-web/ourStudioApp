@@ -8,6 +8,6 @@ const { ensureAuth, ensureGuest } = require('../middleware/authentication');
 router.use('/', authRoutes);
 router.use('/courses', coursesRoutes);
 router.use('/my-courses', ensureAuth , myCoursesRoutes);
-router.use('/',  (req, res) => res.send('Hello from the root route'));
+router.use('/',  (req, res) => res.render('./pages/login', {layout: './layouts/loginLayout'}));
 
 module.exports = router;

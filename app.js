@@ -5,6 +5,7 @@ const passport = require('passport');
 const { connectDB } = require('./db/index');
 var indexRouter = require('./routes/index');
 var authRouter = require('./routes/auth');
+const expressLayouts = require('express-ejs-layouts');
 
 require('dotenv').config({ path: './.env' });
 
@@ -13,7 +14,11 @@ const port = process.env.PORT;
 
 app.use(express.json()); // Para parsear application/json
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
 
+app.use(expressLayouts);
+app.set('layout', './layouts/loginLayout');
+app.set('view engine', 'ejs');
 
 app.use(morgan('dev'));
 // Conectar a MongoDB

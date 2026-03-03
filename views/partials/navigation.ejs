@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="css/main.css">
+<nav class="navbar">
+        <div class="nav-left">
+            <div class="user-card">
+                <div class="avatar-placeholder">
+                    <%= username.charAt(0).toUpperCase() %>
+                </div>
+                <span class="user-name">
+                    <%= username %> <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i>
+                </span>
+            </div>
+
+            <a href="/<%= username %>/courses" class="nav-item active">
+                <i class="fas fa-book-open"></i>
+                <span>tus cursos</span>
+            </a>
+
+            <a href="/explorar" class="nav-item">
+                <i class="fas fa-graduation-cap"></i>
+                <span>más cursos</span>
+            </a>
+
+            <a href="/community" class="nav-item">
+                <i class="fas fa-users"></i>
+                <span>Community</span>
+            </a>
+
+            <a href="/galeria" class="nav-item">
+                <i class="fas fa-images"></i>
+                <span>Galeria</span>
+            </a>
+        </div>
+
+        <div class="logout-area">
+            <a href="/logout" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </nav>
