@@ -1,0 +1,177 @@
+ /* === Paleta de colores principal === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: #f0ead2;  /* Vanilla Cream */
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        /* tarjeta principal – invitación a ingresar */
+        .card {
+            background: #ffffff;        /* blanco suave para contraste limpio */
+            border-radius: 2rem;
+            box-shadow: 0 20px 35px -8px rgba(108, 88, 76, 0.25); /* sombra con Ash Brown */
+            max-width: 480px;
+            width: 100%;
+            padding: 2.8rem 2.5rem;
+            text-align: center;
+            transition: transform 0.2s ease;
+            border: 1px solid #dde5b6;  /* Cream */
+        }
+
+        /* contenedor para el logo — puedes colocar cualquier imagen aquí */
+        .logo-placeholder {
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-placeholder img {
+            max-width: 180px;
+            max-height: 100px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 6px rgba(108, 88, 76, 0.15));
+        }
+
+        /* si no hay imagen, mostramos un área con línea de puntos */
+        .logo-placeholder:not(:has(img)) {
+            background: #dde5b6;         /* Cream */
+            border: 2px dashed #a98467;   /* Faded Copper */
+            border-radius: 1.5rem;
+            min-height: 100px;
+            color: #6c584c;               /* Ash Brown */
+            font-size: 1rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            transition: background 0.2s;
+        }
+
+        .logo-placeholder:not(:has(img)) span {
+            opacity: 0.75;
+            letter-spacing: 0.3px;
+        }
+
+        .logo-placeholder:not(:has(img)) i {
+            margin-right: 8px;
+            color: #a98467;
+            font-size: 1.2rem;
+        }
+
+        /* mensaje principal */
+        h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #6c584c;               /* Ash Brown */
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .subheading {
+            color: #a98467;               /* Faded Copper */
+            font-size: 1rem;
+            font-weight: 400;
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid #dde5b6;
+            padding-bottom: 1.25rem;
+            display: inline-block;
+        }
+
+        /* botón de Google (estilo moderno) */
+        .google-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.9rem;
+            background: #ffffff;
+            border: 2px solid #adc178;     /* Muted Olive */
+            border-radius: 60px;
+            padding: 0.9rem 2.2rem;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #6c584c;                /* Ash Brown */
+            transition: all 0.25s ease;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 8px 20px -10px rgba(108, 88, 76, 0.3);
+            margin: 1.5rem 0 1rem 0;
+            width: 100%;
+            max-width: 340px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .google-btn i {
+            font-size: 1.6rem;
+            color: #a98467;                /* Faded Copper, sutileza artesanal */
+            transition: color 0.2s;
+        }
+
+        .google-btn:hover {
+            background: #f0ead2;            /* Vanilla Cream */
+            border-color: #a98467;           /* Faded Copper */
+            box-shadow: 0 12px 24px -12px #6c584c;
+            transform: scale(1.02);
+        }
+
+        .google-btn:hover i {
+            color: #6c584c;                  /* Ash Brown */
+        }
+
+        /* pequeña nota opcional (puede eliminarse en producción) */
+        .legal-note {
+            font-size: 0.8rem;
+            color: #a98467;
+            margin-top: 2.2rem;
+            opacity: 0.75;
+            border-top: 1px solid #dde5b6;
+            padding-top: 1.2rem;
+        }
+
+        .legal-note a {
+            color: #6c584c;
+            text-decoration: underline wavy #adc178 1px;
+            font-weight: 500;
+        }
+
+        /* clases de utilería para adaptar la imagen */
+        .logo-img {
+            border-radius: 16px;
+        }
+
+        /* responsive */
+        @media (max-width: 450px) {
+            .card { padding: 2rem 1.5rem; }
+            h1 { font-size: 1.8rem; }
+            .google-btn { font-size: 1rem; padding: 0.8rem 1.5rem; }
+        }
+
+        /* efecto sutil en el fondo (opcional) */
+        .bg-texture {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            background: radial-gradient(circle at 10% 30%, rgba(173, 193, 120, 0.1) 0%, transparent 30%),
+                        radial-gradient(circle at 90% 70%, rgba(169, 132, 103, 0.08) 0%, transparent 35%);
+            z-index: -1;
+        }
+
+        /* Para que el placeholder de logo con ícono se vea bien */
+        .placeholder-icon {
+            font-size: 1.8rem;
+            margin-right: 10px;
+        }

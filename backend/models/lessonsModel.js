@@ -1,0 +1,77 @@
+require('dotenv').config();
+const { connectDB, getDB } = require('../db/index');
+const { ObjectId } = require('mongodb');
+
+async function getAllLessons() {
+    try {
+        await connectDB();
+        const db = getDB();
+        const lessonsCollection = db.collection('lessons');
+        const lessons = await lessonsCollection.find({}).toArray();
+        return lessons; 
+    } catch(error) {
+        console.error('Error fetching lessons:', error);
+        throw error;
+    }   
+}
+
+async function getLessonById(lessonId) {
+    try {
+        await connectDB();
+        const db = getDB();
+        const lessonsCollection = db.collection('lessons');
+        const objectId = new ObjectId(lessonId);
+        const lesson = await lessonsCollection.findOne({ _id: objectId });
+        console.log('Lesson fetched successfully:', lesson);
+        return lesson; 
+    } catch(error) {
+        console.error('Error fetching lessons:', error);
+        throw error;
+    }   
+}
+
+async function getLessonsByCourseId(courseId) {
+    try {
+        await connectDB();
+        const db = getDB();
+        const lessonsCollection = db.collection('lessons');
+        const objectId = new ObjectId(courseId);
+        const lessons = await lessonsCollection.find({ courseId: objectId }).toArray();
+        return lessons; 
+    } catch(error) {
+        console.error('Error fetching lessons:', error);
+        throw error;
+    }   
+}
+
+async function getNextLesson(lessonId) {
+    try {
+         await connectDB();
+        const db = getDB();
+        const lessonsCollection = db.collection('lessons');
+        const currentCourse = await lessonsCollection.findOne({ _id: new ObjectId(lessonId) });
+        const nextLesson = await lessonsCollection.findOne({ _id: new ObjectId(currentCourse.nextStepId) });
+        console.log('Next lesson fetched successfully:', nextLesson);
+        return nextLesson;
+    } catch(error) {
+        console.error('Error fetching lessons:', error);
+        throw error;
+    }
+}
+
+async function getPrevLesson(lessonId) {
+    try {
+         await connectDB();
+        const db = getDB();
+        const lessonsCollection = db.collection('lessons');
+        const currentCourse = await lessonsCollection.findOne({ _id: new ObjectId(lessonId) });
+        const prevLesson = await lessonsCollection.findOne({ _id: new ObjectId(currentCourse.prevStepId) });
+        console.log('prev:', prevLesson);
+        return prevLesson;
+    } catch(error) {
+        console.error('Error fetching lessons:', error);
+        throw error;
+    }
+}
+
+module.exports = { getAllLessons, getLessonsByCourseId, getNextLesson, getPrevLesson, getLessonById };
