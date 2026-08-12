@@ -44,17 +44,11 @@ async function getLessonById(req, res) {
         // Convertir courseId a string para evitar problemas en la vista
         const courseIdString = lesson.courseId ? lesson.courseId.toString() : null;
 
-        res.render('./pages/showLesson', {
+        res.json({
             lesson: lesson,
-            currentLesson: lesson,
             prevLesson: prevLesson || null,
             nextLesson: nextLesson || null,
-            courseId: courseIdString,
-            title: lesson ? lesson.title : 'Lección no encontrada',
-            username: username,
-            layout: './layouts/mainLayout',
-            currentPage: 'my-courses'
-
+            courseId: courseIdString
         })
     } catch (error) {
         console.error('Error fetching lesson:', error);

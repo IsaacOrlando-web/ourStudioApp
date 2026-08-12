@@ -8,8 +8,10 @@ const { ObjectId } = require('mongodb');
 const enrollInCourse = async (req, res) => {
   try {
     const { courseId } = req.body;
+    console.log(`enrollInCourse called with courseId: ${courseId}`);
     const userId = req.user?._id?.toString();
     const username = req.user?.username;
+
     
     // Validaciones básicas
     if (!userId || !courseId) {
@@ -51,8 +53,11 @@ const enrollInCourse = async (req, res) => {
     // Obtener el progreso inicial
     const progress = await userCourses.getCourseProgress(courseId);
     
-    
-    res.redirect('/my-courses/courses');
+    res.json({
+      message: 'Inscripción exitosa',
+      courseId: courseId,
+      progress: progress
+    });
     
   } catch (error) {
     console.error('Error en enrollInCourse:', error);
@@ -222,20 +227,12 @@ const getAllUserCourses = async (req, res) => {
       };
     });
     
-    const viewUsername = req.user?.username || req.session?.username || username || 'Invitado';
-
-    //res.json({
-    //  username: username,
-    //  totalCourses: result.length,
-    //  courses: result
-    //});
-    res.render('./pages/myCourses', {
-      title: 'Mis Cursos',
-      username: viewUsername,
-      totalCourses: result.length,
-      courses: result,
-      layout: './layouts/mainLayout',
-      currentPage: 'my-courses'
+    res.json({
+      user: {
+        username: username,
+        _id: userId
+      },
+      courses: result
     })
     
   } catch (error) {
@@ -256,13 +253,7 @@ const getLessonsByCourseId = async (req, res) => {
     const userCourses = createCoursesUser(userId);
     const lessons = await userCourses.getLessonsByCourse(courseId);
 
-    res.render('./pages/showLessons', {
-      title: 'Lecciones del Curso',
-      username: username,
-      lessons: lessons,
-      layout: './layouts/mainLayout',
-      currentPage: 'my-courses'
-    });
+    res.json(lessons);
   } catch (error) {
     console.error('Error en getLessonsByCourseId:', error);
     res.status(500).json({ message: 'Error interno del servidor', error: error.message });

@@ -15,7 +15,7 @@ function Login() {
       <div className="card">
         <div className="logo-placeholder">
           <img 
-            src="/logo.png" 
+            src="/img/logo.png" 
             alt="Logo personalizado" 
             className="logo-img"
             style={{ borderRadius: '20px', background: '#dde5b6', padding: '10px 15px' }}

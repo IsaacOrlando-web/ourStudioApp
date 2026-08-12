@@ -25,7 +25,7 @@ export const apiService = {
   markLessonComplete: (lessonId) => api.post(`/lessons/${lessonId}/complete`),
 
   // Autenticación
-  logout: () => api.post('/logout')
+  logout: () => api.post('/auth/logout')
 };
 
 export default api;

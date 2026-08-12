@@ -74,28 +74,45 @@ passport.use(new GoogleStrategy({
   }
 }));
 
-// Rutas de autenticación
+// Rutas OAuth (en raíz)
 router.get('/login/federated/google', passport.authenticate('google'));
 
 router.get('/oauth2/redirect/google', 
   passport.authenticate('google', { 
-    failureRedirect: '/login'
+    failureRedirect: 'http://localhost:5173/login'
   }),
   (req, res) => {
     if (req.user) {
       req.session.username = req.user.username || req.user.name || 'Invitado';
-      const redirectName = req.user.username || req.user.name || 'Invitado';
-      res.redirect('/my-courses/courses');
+      res.redirect('http://localhost:5173/');
     } else {
-      res.redirect('/login');
+      res.redirect('http://localhost:5173/login');
     }
   }
 );
 
-// Logout
-router.get('/logout', (req, res) => {
-  req.logout(() => {
-    res.redirect('/');
+// Rutas API (bajo /auth)
+// GET /auth/user
+router.get('/auth/user', (req, res) => {
+  if (req.isAuthenticated()) {
+    res.json({
+      _id: req.user._id,
+      username: req.user.username || req.user.name,
+      email: req.user.email,
+      name: req.user.name
+    });
+  } else {
+    res.status(401).json({ error: 'No autenticado' });
+  }
+});
+
+// POST /auth/logout
+router.post('/auth/logout', (req, res) => {
+  req.logout((err) => {
+    if (err) {
+      return res.status(500).json({ error: 'Error al cerrar sesión' });
+    }
+    res.json({ message: 'Sesión cerrada correctamente' });
   });
 });
 

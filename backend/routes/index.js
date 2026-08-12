@@ -1,13 +1,13 @@
 const coursesRoutes = require('./coursesRoutes');
-const authRoutes = require('./auth');
 const myCoursesRoutes = require('./coursesUsersRoutes');
 const express = require('express');
 const router = express.Router();
-const { ensureAuth, ensureGuest } = require('../middleware/authentication');
+const { ensureAuth } = require('../middleware/authentication');
 
-router.use('/', authRoutes);
+// Rutas de cursos (públicas)
 router.use('/courses', coursesRoutes);
-router.use('/my-courses', ensureAuth , myCoursesRoutes);
-router.use('/',  (req, res) => res.render('./pages/login', {layout: './layouts/loginLayout'}));
+
+// Rutas de mis cursos (privadas)
+router.use('/my-courses', ensureAuth, myCoursesRoutes);
 
 module.exports = router;
