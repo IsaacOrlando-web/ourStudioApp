@@ -1,0 +1,177 @@
+<!-- Header del curso -->
+<div class="page-header">
+    <h1><%= course.title %></h1>
+    <div class="subtitle">
+        <span class="badge level">
+            <i class="fas fa-signal"></i> <%= course.level %>
+        </span>
+        <span class="badge category">
+            <i class="fas fa-tag"></i> <%= course.category %>
+        </span>
+    </div>
+</div>
+
+<!-- Contenido del curso -->
+<div class="course-detail-container">
+    <!-- Imagen del curso -->
+    <div class="course-detail-header">
+        <img 
+            src="<%= course.coverUrl %>" 
+            alt="<%= course.title %>"
+            class="course-detail-cover"
+            onerror="this.src='https://placehold.co/600x400/f0ead2/6c584c?text=Curso'"
+        >
+    </div>
+
+    <!-- Información del curso -->
+    <div class="course-detail-content">
+        <div class="course-info-section">
+            <h2>Acerca del curso</h2>
+            <p><%= course.description || 'Este es un excelente curso para aprender nuevas habilidades' %></p>
+        </div>
+
+        <% if (course.lessons && course.lessons.length > 0) { %>
+            <div class="course-lessons-section">
+                <h2>Lecciones del curso</h2>
+                <div class="lessons-list">
+                    <% course.lessons.forEach((lesson, index) => { %>
+                        <div class="lesson-item">
+                            <div class="lesson-number">
+                                <i class="fas fa-video"></i> Lección <%= index + 1 %>
+                            </div>
+                            <div class="lesson-info">
+                                <h4><%= lesson.title || 'Lección ' + (index + 1) %></h4>
+                                <p><%= lesson.description || 'Contenido de la lección' %></p>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+        <% } %>
+
+        <div class="course-actions">
+            <a href="/courses/<%= course._id %>/enroll" class="enroll-btn">
+                <i class="fas fa-check-circle"></i> Inscribirse en este curso
+            </a>
+            <a href="/explorar" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Volver a cursos
+            </a>
+        </div>
+    </div>
+</div>
+
+<style>
+.course-detail-container {
+    margin-top: 2rem;
+}
+
+.course-detail-header {
+    margin-bottom: 2rem;
+}
+
+.course-detail-cover {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.course-detail-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.course-info-section,
+.course-lessons-section {
+    padding: 1.5rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.course-info-section h2,
+.course-lessons-section h2 {
+    color: #6c584c;
+    margin-bottom: 1rem;
+}
+
+.course-info-section p {
+    color: #5a5a5a;
+    line-height: 1.6;
+}
+
+.lessons-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.lesson-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f9f9f9;
+    border-left: 4px solid #adc178;
+    border-radius: 4px;
+}
+
+.lesson-number {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: bold;
+    color: #6c584c;
+    white-space: nowrap;
+}
+
+.lesson-info h4 {
+    color: #6c584c;
+    margin-bottom: 0.5rem;
+}
+
+.lesson-info p {
+    color: #7a7a7a;
+    font-size: 0.9rem;
+}
+
+.course-actions {
+    display: flex;
+    gap: 1rem;
+    padding-top: 1rem;
+}
+
+.enroll-btn,
+.back-btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.enroll-btn {
+    background: #adc178;
+    color: white;
+    border: 2px solid #adc178;
+}
+
+.enroll-btn:hover {
+    background: #9ab366;
+    border-color: #9ab366;
+}
+
+.back-btn {
+    background: transparent;
+    color: #6c584c;
+    border: 2px solid #6c584c;
+}
+
+.back-btn:hover {
+    background: #6c584c;
+    color: white;
+}
+</style>

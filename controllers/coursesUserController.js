@@ -160,10 +160,12 @@ const getAllUserCourses = async (req, res) => {
     //Verificar que el usuario tiene lecciones
     const exists = await userCourses.collectionExists();
     if (!exists) {
-      return res.json({
+      return res.render('./pages/myCourses', {
+        title: 'Mis Cursos',
         username: username,
+        totalCourses: 0,
         courses: [],
-        message: 'El usuario no tiene cursos inscritos'
+        layout: './layouts/mainLayout'
       });
     }
     

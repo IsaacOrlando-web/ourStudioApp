@@ -4,7 +4,14 @@ const coursesModel = require('../models/coursesModel');
 async function getAllCourses(req, res) {
     try {
         const courses = await coursesModel.getAllCourses();
-        res.json(courses);
+        const username = req.session?.username || null;
+        res.render('./pages/courses', {
+            title: 'Cursos',
+            username: username,
+            totalCourses: courses.length,
+            courses: courses,
+            layout: './layouts/mainLayout'
+        });
     } catch (error) {
         console.error('Error fetching courses:', error);
         res.status(500).json({ error: 'Error fetching courses' });

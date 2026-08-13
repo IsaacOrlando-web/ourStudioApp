@@ -1,19 +1,21 @@
 <link rel="stylesheet" href="css/main.css">
 <nav class="navbar">
         <div class="nav-left">
-            <div class="user-card">
-                <div class="avatar-placeholder">
-                    <%= username.charAt(0).toUpperCase() %>
+            <% if (username) { %>
+                <div class="user-card">
+                    <div class="avatar-placeholder">
+                        <%= username.charAt(0).toUpperCase() %>
+                    </div>
+                    <span class="user-name">
+                        <%= username %> <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i>
+                    </span>
                 </div>
-                <span class="user-name">
-                    <%= username %> <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i>
-                </span>
-            </div>
 
-            <a href="/<%= username %>/courses" class="nav-item active">
-                <i class="fas fa-book-open"></i>
-                <span>tus cursos</span>
-            </a>
+                <a href="/<%= username %>/courses" class="nav-item active">
+                    <i class="fas fa-book-open"></i>
+                    <span>tus cursos</span>
+                </a>
+            <% } %>
 
             <a href="/explorar" class="nav-item">
                 <i class="fas fa-graduation-cap"></i>

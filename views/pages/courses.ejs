@@ -1,0 +1,55 @@
+<!-- Header con estadísticas -->
+<div class="page-header">
+    <h1>
+        Cursos
+        <span class="stats-badge">
+            <i class="fas fa-book"></i> <%= totalCourses %> cursos
+        </span>
+    </h1>
+    <div class="subtitle">
+        <i class="fas fa-graduation-cap"></i>
+        <span>Explora nuestro catálogo de cursos</span>
+    </div>
+</div>
+
+<!-- Grid de cursos -->
+<% if (courses && courses.length > 0) { %>
+    <div class="courses-grid">
+        <% courses.forEach(course => { %>
+            <div class="course-card">
+                <img 
+                    src="<%= course.coverUrl %>" 
+                    alt="<%= course.title %>"
+                    class="course-cover"
+                    onerror="this.src='https://placehold.co/600x400/f0ead2/6c584c?text=Curso'"
+                >
+                <div class="course-content">
+                    <h3 class="course-title"><%= course.title %></h3>
+                    
+                    <div class="course-meta">
+                        <span class="badge level">
+                            <i class="fas fa-signal"></i> <%= course.level %>
+                        </span>
+                        <span class="badge category">
+                            <i class="fas fa-tag"></i> <%= course.category %>
+                        </span>
+                    </div>
+
+                    <a href="/courses/<%= course._id %>/enroll" class="continue-btn">
+                        <i class="fas fa-play"></i> Inscribirse
+                    </a>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+<% } else { %>
+    <!-- Estado vacío (sin cursos) -->
+    <div class="empty-state">
+        <i class="fas fa-books"></i>
+        <h3>No hay cursos disponibles</h3>
+        <p>Vuelve más tarde para ver nuestros nuevos cursos</p>
+        <a href="/" class="explore-btn">
+            <i class="fas fa-home"></i> Ir al inicio
+        </a>
+    </div>
+<% } %>
